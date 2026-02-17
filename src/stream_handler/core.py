@@ -26,3 +26,5 @@ class ChunkType(str, Enum):
 
 @dataclass(frozen=True)
 class StreamChunk:
+    index: int
+    chunk_type: ChunkType
