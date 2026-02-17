@@ -31,3 +31,5 @@ class StreamChunk:
     content: str
     received_at: float
 
+    @property
+    def is_terminal(self) -> bool:
