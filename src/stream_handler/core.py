@@ -29,3 +29,5 @@ class StreamChunk:
     index: int
     chunk_type: ChunkType
     content: str
+    received_at: float
+
