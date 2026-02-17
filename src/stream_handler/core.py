@@ -28,3 +28,4 @@ class ChunkType(str, Enum):
 class StreamChunk:
     index: int
     chunk_type: ChunkType
+    content: str
