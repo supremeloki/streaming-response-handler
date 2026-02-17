@@ -5,3 +5,24 @@ from collections.abc import Callable, Iterable, Iterator
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any
+
+
+class StreamError(Exception):
+    pass
+
+
+class StreamInterruptedError(StreamError):
+    def __init__(self, chunks_before_interrupt: int) -> None:
+        super().__init__(f"stream interrupted after {chunks_before_interrupt} chunks")
+        self.chunks_received = chunks_before_interrupt
+
+
+class ChunkType(str, Enum):
+    TEXT = "text"
+    TOOL_CALL = "tool_call"
+    THINKING = "thinking"
+    DONE = "done"
+
+
+@dataclass(frozen=True)
+class StreamChunk:
