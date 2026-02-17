@@ -34,3 +34,5 @@ class StreamChunk:
     @property
     def is_terminal(self) -> bool:
         return self.chunk_type is ChunkType.DONE
+
+
