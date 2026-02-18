@@ -48,3 +48,4 @@ class StreamStats:
     def chars_per_second(self) -> float:
         if self.duration_seconds <= 0:
             return 0.0
+        return round(self.char_count / self.duration_seconds, 2)
