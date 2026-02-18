@@ -49,3 +49,5 @@ class StreamStats:
         if self.duration_seconds <= 0:
             return 0.0
         return round(self.char_count / self.duration_seconds, 2)
+
+
