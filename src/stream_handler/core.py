@@ -43,3 +43,4 @@ class StreamStats:
     duration_seconds: float
     chunks_per_second: float
     first_token_latency: float | None
+
