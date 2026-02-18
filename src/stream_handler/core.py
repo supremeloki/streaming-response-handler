@@ -36,3 +36,5 @@ class StreamChunk:
         return self.chunk_type is ChunkType.DONE
 
 
+@dataclass(frozen=True)
+class StreamStats:
