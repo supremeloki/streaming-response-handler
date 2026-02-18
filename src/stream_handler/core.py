@@ -41,3 +41,5 @@ class StreamStats:
     chunk_count: int
     char_count: int
     duration_seconds: float
+    chunks_per_second: float
+    first_token_latency: float | None
