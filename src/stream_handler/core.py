@@ -51,3 +51,5 @@ class StreamStats:
         return round(self.char_count / self.duration_seconds, 2)
 
 
+class StreamAccumulator:
+    def __init__(self) -> None:
