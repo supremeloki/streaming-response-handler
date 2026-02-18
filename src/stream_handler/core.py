@@ -39,3 +39,5 @@ class StreamChunk:
 @dataclass(frozen=True)
 class StreamStats:
     chunk_count: int
+    char_count: int
+    duration_seconds: float
