@@ -44,3 +44,5 @@ class StreamStats:
     chunks_per_second: float
     first_token_latency: float | None
 
+    @property
+    def chars_per_second(self) -> float:
