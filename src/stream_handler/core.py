@@ -59,3 +59,5 @@ class StreamAccumulator:
         self._count = 0
 
     def absorb(self, chunk: StreamChunk) -> None:
+        self._count += 1
+        if chunk.chunk_type is ChunkType.TEXT:
