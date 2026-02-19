@@ -61,3 +61,5 @@ class StreamAccumulator:
     def absorb(self, chunk: StreamChunk) -> None:
         self._count += 1
         if chunk.chunk_type is ChunkType.TEXT:
+            self._text_parts.append(chunk.content)
+        elif chunk.chunk_type is ChunkType.THINKING:
