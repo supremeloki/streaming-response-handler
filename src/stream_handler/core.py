@@ -53,3 +53,4 @@ class StreamStats:
 
 class StreamAccumulator:
     def __init__(self) -> None:
+        self._text_parts: list[str] = []
