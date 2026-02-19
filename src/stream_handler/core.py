@@ -58,3 +58,4 @@ class StreamAccumulator:
         self._tool_calls: list[str] = []
         self._count = 0
 
+    def absorb(self, chunk: StreamChunk) -> None:
