@@ -56,3 +56,5 @@ class StreamAccumulator:
         self._text_parts: list[str] = []
         self._thinking_parts: list[str] = []
         self._tool_calls: list[str] = []
+        self._count = 0
+
