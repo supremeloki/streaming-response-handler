@@ -73,3 +73,4 @@ class StreamAccumulator:
 
     @property
     def thinking(self) -> str:
+        return "".join(self._thinking_parts)
