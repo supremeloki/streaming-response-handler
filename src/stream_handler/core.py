@@ -69,3 +69,5 @@ class StreamAccumulator:
 
     @property
     def text(self) -> str:
+        return "".join(self._text_parts)
+
