@@ -68,3 +68,4 @@ class StreamAccumulator:
             self._tool_calls.append(chunk.content)
 
     @property
+    def text(self) -> str:
