@@ -64,3 +64,5 @@ class StreamAccumulator:
             self._text_parts.append(chunk.content)
         elif chunk.chunk_type is ChunkType.THINKING:
             self._thinking_parts.append(chunk.content)
+        elif chunk.chunk_type is ChunkType.TOOL_CALL:
+            self._tool_calls.append(chunk.content)
