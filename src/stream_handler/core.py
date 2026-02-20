@@ -76,3 +76,4 @@ class StreamAccumulator:
         return "".join(self._thinking_parts)
 
     @property
+    def tool_calls(self) -> tuple[str, ...]:
