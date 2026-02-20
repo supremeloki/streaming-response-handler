@@ -77,3 +77,5 @@ class StreamAccumulator:
 
     @property
     def tool_calls(self) -> tuple[str, ...]:
+        return tuple(self._tool_calls)
+
