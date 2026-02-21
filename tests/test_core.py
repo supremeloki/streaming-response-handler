@@ -75,3 +75,4 @@ def test_on_chunk_callback_fires_per_chunk():
     handler.consume([(ChunkType.TEXT, "a"), (ChunkType.TEXT, "b"), done_chunk()])
     assert seen == [ChunkType.TEXT, ChunkType.TEXT, ChunkType.DONE]
 
+
