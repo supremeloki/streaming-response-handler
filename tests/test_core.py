@@ -72,3 +72,5 @@ def test_on_chunk_callback_fires_per_chunk():
     seen: list[ChunkType] = []
     handler = StreamHandler(on_chunk=lambda c: seen.append(c.chunk_type),
                             clock=FakeClock())
+    handler.consume([(ChunkType.TEXT, "a"), (ChunkType.TEXT, "b"), done_chunk()])
+    assert seen == [ChunkType.TEXT, ChunkType.TEXT, ChunkType.DONE]
