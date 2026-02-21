@@ -79,3 +79,5 @@ class StreamAccumulator:
     def tool_calls(self) -> tuple[str, ...]:
         return tuple(self._tool_calls)
 
+    @property
+    def chunk_count(self) -> int:
