@@ -71,3 +71,4 @@ def test_tool_calls_collected():
 def test_on_chunk_callback_fires_per_chunk():
     seen: list[ChunkType] = []
     handler = StreamHandler(on_chunk=lambda c: seen.append(c.chunk_type),
+                            clock=FakeClock())
