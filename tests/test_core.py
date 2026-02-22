@@ -79,3 +79,5 @@ def test_on_chunk_callback_fires_per_chunk():
 def test_first_token_latency_measured():
     clock = FakeClock()
     handler = StreamHandler(clock=clock)
+    _, stats = handler.consume([(ChunkType.TEXT, "fast"), done_chunk()])
+    assert stats.first_token_latency is not None
