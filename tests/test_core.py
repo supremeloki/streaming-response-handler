@@ -76,3 +76,5 @@ def test_on_chunk_callback_fires_per_chunk():
     assert seen == [ChunkType.TEXT, ChunkType.TEXT, ChunkType.DONE]
 
 
+def test_first_token_latency_measured():
+    clock = FakeClock()
