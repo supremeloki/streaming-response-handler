@@ -81,3 +81,4 @@ def test_first_token_latency_measured():
     handler = StreamHandler(clock=clock)
     _, stats = handler.consume([(ChunkType.TEXT, "fast"), done_chunk()])
     assert stats.first_token_latency is not None
+    assert stats.first_token_latency > 0
