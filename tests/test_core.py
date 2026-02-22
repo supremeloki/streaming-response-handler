@@ -78,3 +78,4 @@ def test_on_chunk_callback_fires_per_chunk():
 
 def test_first_token_latency_measured():
     clock = FakeClock()
+    handler = StreamHandler(clock=clock)
