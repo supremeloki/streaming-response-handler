@@ -84,3 +84,4 @@ def test_first_token_latency_measured():
     assert stats.first_token_latency > 0
 
 
+def test_first_token_latency_none_when_empty():
