@@ -85,3 +85,4 @@ def test_first_token_latency_measured():
 
 
 def test_first_token_latency_none_when_empty():
+    handler = StreamHandler(clock=FakeClock())
