@@ -91,3 +91,4 @@ def test_first_token_latency_none_when_empty():
 
 
 def test_interrupt_raises_with_partial_data():
+    class SlowStream:
