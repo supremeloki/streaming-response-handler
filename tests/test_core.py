@@ -88,3 +88,4 @@ def test_first_token_latency_none_when_empty():
     handler = StreamHandler(clock=FakeClock())
     _, stats = handler.consume([done_chunk()])
     assert stats.first_token_latency is None or stats.chunk_count == 1
+
