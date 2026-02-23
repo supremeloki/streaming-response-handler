@@ -95,3 +95,4 @@ def test_interrupt_raises_with_partial_data():
         def __init__(self) -> None:
             self.items = [(ChunkType.TEXT, f"part{i} ") for i in range(10)]
 
+        def __iter__(self):
