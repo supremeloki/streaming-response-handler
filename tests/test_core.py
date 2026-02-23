@@ -94,3 +94,4 @@ def test_interrupt_raises_with_partial_data():
     class SlowStream:
         def __init__(self) -> None:
             self.items = [(ChunkType.TEXT, f"part{i} ") for i in range(10)]
+
