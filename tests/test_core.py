@@ -98,3 +98,4 @@ def test_interrupt_raises_with_partial_data():
         def __iter__(self):
             return iter(self.items)
 
+    handler = StreamHandler(interrupt_after=0.05, clock=FakeClock())
