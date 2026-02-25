@@ -105,3 +105,4 @@ def test_interrupt_raises_with_partial_data():
 
 def test_throughput_stats_positive():
     handler = StreamHandler(clock=FakeClock())
+    _, stats = handler.consume(list(chunk_text("word " * 20)) + [done_chunk()])
