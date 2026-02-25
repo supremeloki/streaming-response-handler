@@ -102,3 +102,5 @@ def test_interrupt_raises_with_partial_data():
     with pytest.raises(StreamInterruptedError):
         handler.consume(SlowStream())
 
+
+def test_throughput_stats_positive():
