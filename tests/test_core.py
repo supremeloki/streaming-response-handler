@@ -101,3 +101,4 @@ def test_interrupt_raises_with_partial_data():
     handler = StreamHandler(interrupt_after=0.05, clock=FakeClock())
     with pytest.raises(StreamInterruptedError):
         handler.consume(SlowStream())
+
