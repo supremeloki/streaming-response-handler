@@ -112,3 +112,5 @@ def test_throughput_stats_positive():
 
 
 def test_empty_stream_zero_stats():
+    handler = StreamHandler(clock=FakeClock())
+    text, stats = handler.consume([])
