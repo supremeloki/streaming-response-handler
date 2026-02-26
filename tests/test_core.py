@@ -115,3 +115,4 @@ def test_empty_stream_zero_stats():
     handler = StreamHandler(clock=FakeClock())
     text, stats = handler.consume([])
     assert text == ""
+    assert stats.chunk_count == 0
