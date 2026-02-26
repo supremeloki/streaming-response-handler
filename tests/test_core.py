@@ -118,3 +118,4 @@ def test_empty_stream_zero_stats():
     assert stats.chunk_count == 0
     assert stats.chunks_per_second == 0
 
+
