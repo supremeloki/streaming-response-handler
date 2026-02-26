@@ -109,3 +109,5 @@ def test_throughput_stats_positive():
     assert stats.chunks_per_second > 0
     assert stats.chars_per_second > 0
     assert stats.duration_seconds > 0
+
+
