@@ -111,3 +111,4 @@ def test_throughput_stats_positive():
     assert stats.duration_seconds > 0
 
 
+def test_empty_stream_zero_stats():
