@@ -121,3 +121,4 @@ def test_empty_stream_zero_stats():
 
 def test_done_chunk_is_terminal():
     kind, content = done_chunk()
+    assert kind is ChunkType.DONE and content == ""
