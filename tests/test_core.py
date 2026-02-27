@@ -119,3 +119,5 @@ def test_empty_stream_zero_stats():
     assert stats.chunks_per_second == 0
 
 
+def test_done_chunk_is_terminal():
+    kind, content = done_chunk()
