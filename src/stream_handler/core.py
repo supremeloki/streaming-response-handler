@@ -81,3 +81,64 @@ class StreamAccumulator:
 
     @property
     def chunk_count(self) -> int:
+        return self._count
+
+
+class StreamHandler:
+    def __init__(self,
+                 on_chunk: Callable[[StreamChunk], None] | None = None,
+                 interrupt_after: float | None = None,
+                 clock: Callable[[], float] = time.monotonic) -> None:
+        self._on_chunk = on_chunk
+        self._interrupt_after = interrupt_after
+        self._clock = clock
+        self._accumulator = StreamAccumulator()
+
+    def consume(self, raw_chunks: Iterable[tuple[ChunkType, str]]) -> tuple[str, StreamStats]:
+        start = self._clock()
+        first_token_latency: float | None = None
+        index = 0
+        try:
+            for raw_type, raw_content in raw_chunks:
+                now = self._clock()
+                if first_token_latency is None and raw_content:
+                    first_token_latency = round(now - start, 4)
+                chunk = StreamChunk(
+                    index=index,
+                    chunk_type=raw_type,
+                    content=raw_content,
+                    received_at=now,
+                )
+                self._accumulator.absorb(chunk)
+                if self._on_chunk is not None:
+                    self._on_chunk(chunk)
+                index += 1
+                if (self._interrupt_after is not None
+                        and now - start > self._interrupt_after):
+                    raise StreamInterruptedError(index)
+        except StopIteration:
+            pass
+        end = self._clock()
+        stats = StreamStats(
+            chunk_count=index,
+            char_count=len(self._accumulator.text),
+            duration_seconds=round(end - start, 4),
+            chunks_per_second=round(index / max(end - start, 1e-9), 2),
+            first_token_latency=first_token_latency,
+        )
+        return self._accumulator.text, stats
+
+    @property
+    def accumulator(self) -> StreamAccumulator:
+        return self._accumulator
+
+
+def chunk_text(text: str, size: int = 4) -> Iterator[tuple[ChunkType, str]]:
+    if size < 1:
+        raise StreamError("chunk size must be >= 1")
+    for position in range(0, len(text), size):
+        yield ChunkType.TEXT, text[position:position + size]
+
+
+def done_chunk() -> tuple[ChunkType, str]:
+    return ChunkType.DONE, ""
